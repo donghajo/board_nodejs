@@ -1,5 +1,5 @@
-var mysql = require('mysql');
-var connection = mysql.createConnection({
+const mysql = require('mysql');
+const connection = mysql.createConnection({
     host : 'localhost',
     user : 'root',
     password : '980605',
@@ -8,5 +8,3 @@ var connection = mysql.createConnection({
 
 module.exports = connection;
 
-
-route
