@@ -16,7 +16,8 @@ exports.board_read = async (req, res) => {
     try {
        let rows = await boardService.board_read(board_uid);
        console.log("pass");
-       return res.json(rows[0]);
+       console.log(rows);
+       return res.json(rows);
     } catch(err){
         return res.status(500).json(err);
     }

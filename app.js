@@ -8,8 +8,6 @@ var indexRouter = require('./src/routes/index');
 var usersRouter = require('./src/routes/users');
 var boardRouter = require('./src/routes/board-route');
 
-const mysql = require('./database/mysql');
-
 var app = express();
 
 // view engine setup
@@ -41,10 +39,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-
-
-
-
 
 module.exports = app;

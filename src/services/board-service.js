@@ -1,5 +1,5 @@
 const boardQuery = require('../queries/board-query');
-const pool = require('../../database/mysql');
+const pool = require('../database/pool');
 
 
 exports.board_insert = async (req) => {
