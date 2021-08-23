@@ -7,5 +7,7 @@ const connection = mysql.createConnection({
     database : 'db_board'
 });
 
+
+
 module.exports = connection;
 
