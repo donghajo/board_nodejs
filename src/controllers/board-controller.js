@@ -4,6 +4,7 @@ exports.board_insert = async (req, res) => {
     let { board_uid } = req.body;
     try{
         let rows = await boardService.board_insert(board_uid);
+        console.log("pass");
         return res.json(rows[0]);
     } catch(err){
         return res.status(500).json(err);
@@ -15,9 +16,9 @@ exports.board_read = async (req, res) => {
     let { board_uid } = req.params;
     try {
        let rows = await boardService.board_read(board_uid);
-       console.log("pass");
+       console.log("pass_controller");
        console.log(rows);
-       return res.json(rows);
+       return res.render('index', {rows:rows})
     } catch(err){
         return res.status(500).json(err);
     }
@@ -25,7 +26,14 @@ exports.board_read = async (req, res) => {
 
 
 exports.board_update = async (req, res, next) => {
-
+    let { board_uid } = req.params;
+    try{
+        let rows = await boardService.board_update(board_uid);
+        console.log("pass");
+        return res.json(rows[0]);
+    } catch(err){
+        return res.status(500).json(err);
+    }
 }
 
 
