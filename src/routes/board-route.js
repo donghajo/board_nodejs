@@ -1,8 +1,10 @@
 var router = require('express').Router()
 const boardController = require('../controllers/board-controller');
 
-router.get('/:board_uid', boardController.board_read);
-router.post('/insert', boardController.board_insert);
+
+router.get('/read/:board_uid', boardController.board_read);
+router.get('/insert', boardController.board_read_insert);
+router.post('/', boardController.board_insert);
 router.patch('/update/:board_uid', boardController.board_update);
 router.delete('/', boardController.board_delete);
 

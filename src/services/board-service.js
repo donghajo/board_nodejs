@@ -9,8 +9,10 @@ exports.board_insert = async (req) => {
 
 exports.board_read = async (board_uid) => {
     try {
-        let data = await pool.query(boardQuery.board_read, [board_uid]);
-        return data[0];
+        let rows = await pool.query(boardQuery.board_read, [board_uid]);
+        console.log("pass_service");
+        console.log(rows[0]);
+        return rows[0];
     } catch (err) {
         console.log(err);
         throw Error(err);

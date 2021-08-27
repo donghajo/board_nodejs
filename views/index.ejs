@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Board_list</title>
-    <!-- <link rel="stylesheet" type="text/css" href="/css/main.css"> -->
+    <!-- <link rel="stylesheet" href="./css/main.css"> -->
 </head>
 <body>
-    <h1 class = "board">Board_list</h1>
-    <table class = "board" border="1">
+    <h1>Board_list</h1>
+    <table border="1" style=" width:50%; text-align:center;">
         <th>순번</th>
         <th>제목</th>
         <th>작성자</th>
@@ -15,8 +15,8 @@
         for(i=0;i<1;i++){
           <tr>
             <td></td>
-            <td></td>
-            <td></td>
+            <td>${board_title}</td>
+            <td>${board_writer}</td>
           </tr>
         }
       </script>
@@ -26,7 +26,7 @@
     <input type="button" value="게시글 작성" onclick="movepage()">
     <script type="text/javascript">
         function movepage(){
-          location.href='content.ejs';
+          location.href='/insert';
         }
     </script>
     
