@@ -2,15 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Board_list</title>
+    <title>board_list</title>
     <!-- <link rel="stylesheet" href="./css/main.css"> -->
 </head>
 <body>
-    <h1>Board_list</h1>
-    <table border="1" style=" width:50%; text-align:center;">
+    <h1>board_list</h1>
+    <table border="1" style=" width:50%;">
         <th>순번</th>
         <th>제목</th>
         <th>작성자</th>
+
         <script>
         for(i=0;i<rows.length;i++){
           <tr>
@@ -19,10 +20,11 @@
             <td>${board_writer}</td>
           </tr>
         }
-      </script>
+        </script>
         
         
     </table>
+    
     <input type="button" value="게시글 작성" onclick="movepage()">
     <script type="text/javascript">
         function movepage(){
