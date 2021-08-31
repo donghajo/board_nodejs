@@ -6,23 +6,28 @@
 </head>
 <body>
     <h1>board_write</h1>
-    <form action="/board/insert" method="post">
+    <form action="/" method="post">
         <table border="1">
             <tr>
                 <td>작성자</td>
-                <td><input type="text" name="name" id="name" required/></td>
+                <td><input type="text" name="name" id="board_writer" required/></td>
             </tr>
             <tr>
                 <td>제목</td>
-                <td><input type="text" name="title" id="title" required/></td>
+                <td><input type="text" name="title" id="board_title" required/></td>
             </tr>
             <tr>
                 <td>내용</td>
-                <td><textarea name="content" id="content" cols="30" rows="10" required></textarea></td>
+                <td><textarea name="content" id="board_content" cols="30" rows="10" required></textarea></td>
             </tr>
             <tr>
                 <td colspan="2">
-                    <button type="submit">저장</button>
+                    <input type="submit" onclick="pagemove">
+                    <script type="text/javascript">
+                        function movepage(){
+                          location.href='/board/insert';
+                        }
+                    </script>
                 </td>
             </tr>
         </table>

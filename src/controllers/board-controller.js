@@ -1,10 +1,10 @@
 const boardService = require('../services/board-service');
 
 exports.board_insert = async (req, res) => {
-    let { board_uid } = req.body;
+    let { board_title, board_writer, board_content } = req.body;
     try{
-        let rows = await boardService.board_insert(board_uid);
-        console.log("pass");
+        let rows = await boardService.board_insert( board_title, board_writer, board_content);
+        console.log("pass_controller_insert");
         return res.json(rows[0]);
     } catch(err){
         return res.status(500).json(err);
@@ -12,13 +12,11 @@ exports.board_insert = async (req, res) => {
 }
 
 
-exports.board_read = async (req, res) => {
+exports.board_read = async (req, res, next) => {
     let { board_uid } = req.params;
     try {
-       let rows = await boardService.board_read(board_uid);
-       console.log("pass_controller");
-       console.log(rows);
-       return res.render('index', {rows:rows})
+       let rows = await boardService.board_read();
+       return res.render('index', {rows:rows});
     } catch(err){
         return res.status(500).json(err);
     }
@@ -26,7 +24,7 @@ exports.board_read = async (req, res) => {
 
 
 exports.board_read_insert = async (req, res) =>{
-    res.render('insert', {board_title : "글 쓰기"});
+    return res.render('write');
 }
 
 
