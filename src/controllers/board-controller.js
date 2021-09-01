@@ -24,9 +24,8 @@ exports.board_read = async (req, res, next) => {
 exports.board_read_content = async (req, res, next) => {
     var idx = req.params.board_uid;
     try{
-        let row = await boardService.board_read_content(idx);
-        console.log("hello_con");
-        return res.render('read', {row:row[0]});
+        let rows = await boardService.board_read_content(idx);
+        return res.render('read', {title:"글 상세", rows:rows});
     }catch(err){
         return res.status(500).json(err);
     }
@@ -52,9 +51,9 @@ exports.board_update = async (req, res, next) => {
 
 
 exports.board_delete = async (req, res, next) => {
-  let idx = req.body.board_uid;
+  let data = [req.body.board_uid];
   try{
-    boardService.board_delete(idx);
+    boardService.board_delete(data);
     return res.redirect('/board/list');
   }catch(err){
     return res.status(500).json(err);
