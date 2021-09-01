@@ -1,11 +1,10 @@
 const boardService = require('../services/board-service');
 
-exports.board_insert = async (req, res) => {
-    let { board_title, board_writer, board_content } = req.body;
+exports.board_insert = async (req, res, next) => {
+    var data = [req.body.board_title, req.body.board_writer, req.body.board_content];
     try{
-        let rows = await boardService.board_insert( board_title, board_writer, board_content);
-        console.log("pass_controller_insert");
-        return res.json(rows[0]);
+        boardService.board_insert(data);
+        res.redirect('/board/list');
     } catch(err){
         return res.status(500).json(err);
     }
@@ -13,13 +12,25 @@ exports.board_insert = async (req, res) => {
 
 
 exports.board_read = async (req, res, next) => {
-    let { board_uid } = req.params;
     try {
        let rows = await boardService.board_read();
+       
        return res.render('index', {rows:rows});
     } catch(err){
         return res.status(500).json(err);
     }
+}
+
+exports.board_read_content = async (req, res, next) => {
+    var idx = req.params.board_uid;
+    try{
+        let row = await boardService.board_read_content(idx);
+        console.log("hello_con");
+        return res.render('read', {row:row[0]});
+    }catch(err){
+        return res.status(500).json(err);
+    }
+    
 }
 
 
@@ -41,5 +52,12 @@ exports.board_update = async (req, res, next) => {
 
 
 exports.board_delete = async (req, res, next) => {
+  let idx = req.body.board_uid;
+  try{
+    boardService.board_delete(idx);
+    return res.redirect('/board/list');
+  }catch(err){
+    return res.status(500).json(err);
+  }
     
 }
