@@ -6,32 +6,40 @@
 </head>
 <body>
     <h1>board_read</h1>
-    <form action="/board/list/<%=row.board_uid%>" method="read">
+    <form action="/board/list/<%=rows.board_uid%>" method="read">
         <table border="1">
+            <input type="hidden" value="<%=rows.board_uid%>" >
             <tr>
                 <td>제목</td>
-                <td><%=row.board_title%></td>
+                <td><%=rows.board_title%></td>
             </tr>
             <tr>
                 <td>작성자</td>
-                <td><%=row.board_writer%></td>
+                <td><%=rows.board_writer%></td>
             </tr>
             <tr>
                 <td>내용</td>
-                <td><%=row.board_content%></td>
+                <td><%=rows.board_content%></td>
             </tr>
             <tr>
-                <td colspan="2">
-                    <button type="submit">글 수정</button>
-                </td>           
                 <td>
-                    <form action="/board/list" method="post">
-                        <button type="submit">글 삭제</button>
-                    </form>
+                    <button type="submit">글 수정</button>
+                </td>
+                <td>
                     <a href="/board/list">목록</a>
                 </td>
+                
             </tr>
         </table>
     </form>
+                  
+    <form action="/board/list" method="delete">
+        <button type="submit">글 삭제</button>
+    </form>
+
+            
+  
+        
+    </tr>
 </body>
 </html>
