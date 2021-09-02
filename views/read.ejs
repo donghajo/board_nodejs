@@ -5,13 +5,12 @@
     <title>Board_content</title>
 </head>
 <body>
-    <h1>board_read</h1>
-    <form action="/board/list/<%=rows.board_uid%>" method="read">
+    <h1>board_read</h1> 
+    <form action="/board/list" method="post">
         <table border="1">
-            <input type="hidden" value="<%=rows.board_uid%>" >
             <tr>
                 <td>제목</td>
-                <td><%=rows.board_title%></td>
+                <td><%=rows.board_title%><</td>
             </tr>
             <tr>
                 <td>작성자</td>
@@ -22,10 +21,8 @@
                 <td><%=rows.board_content%></td>
             </tr>
             <tr>
-                <td>
+                <td colspan="2">
                     <button type="submit">글 수정</button>
-                </td>
-                <td>
                     <a href="/board/list">목록</a>
                 </td>
                 
@@ -33,13 +30,8 @@
         </table>
     </form>
                   
-    <form action="/board/list" method="delete">
+    <form action="/board/list/delete" method="post">
         <button type="submit">글 삭제</button>
-    </form>
-
-            
-  
-        
-    </tr>
+    </form>   
 </body>
 </html>

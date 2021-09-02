@@ -14,7 +14,6 @@ exports.board_insert = async (req, res, next) => {
 exports.board_read = async (req, res, next) => {
     try {
        let rows = await boardService.board_read();
-       
        return res.render('index', {rows:rows});
     } catch(err){
         return res.status(500).json(err);
@@ -22,10 +21,9 @@ exports.board_read = async (req, res, next) => {
 }
 
 exports.board_read_content = async (req, res, next) => {
-    var idx = req.params.board_uid;
     try{
-        let rows = await boardService.board_read_content(idx);
-        return res.render('read', {title:"글 상세", rows:rows});
+        let rows = await boardService.board_read_content(req);
+        return res.render('read', {rows:rows[0]});
     }catch(err){
         return res.status(500).json(err);
     }
@@ -51,9 +49,9 @@ exports.board_update = async (req, res, next) => {
 
 
 exports.board_delete = async (req, res, next) => {
-  let data = [req.body.board_uid];
   try{
-    boardService.board_delete(data);
+      console.log(req.body.board_uid);
+    boardService.board_delete(req);
     return res.redirect('/board/list');
   }catch(err){
     return res.status(500).json(err);
