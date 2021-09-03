@@ -6,11 +6,11 @@
 </head>
 <body>
     <h1>board_read</h1> 
-    <form action="/board/list" method="post">
+    <form action="/board/list/:<%=rows.board_uid%>" method="post">
         <table border="1">
             <tr>
                 <td>제목</td>
-                <td><%=rows.board_title%><</td>
+                <td><%=rows.board_title%></td>
             </tr>
             <tr>
                 <td>작성자</td>
@@ -22,15 +22,20 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <button type="submit">글 수정</button>
+                    <input type="button" value="글 수정" onclick="movepage()">
+                    <script type="text/javascript">
+                        function movepage(){
+                        location.href='/board/list/update';
+                        }
+                    </script>
                     <a href="/board/list">목록</a>
                 </td>
-                
             </tr>
         </table>
     </form>
                   
-    <form action="/board/list/delete" method="post">
+    <form action="/board/list/<%=rows.board_uid%>" method="post">
+        <input type="hidden" value="<%=rows.board_uid%>"> 
         <button type="submit">글 삭제</button>
     </form>   
 </body>

@@ -6,19 +6,20 @@
 </head>
 <body>
     <h1>board_read</h1>
-    <form action="/board/list/<%=row.board_uid%>" method="post">
+    <form action="/board/list/update" method="post">
         <table border="1">
+            <input type="hidden" name="idx" value="<%=rows.board_uid%>"/>
             <tr>
                 <td>제목</td>
-                <td><input type="text" name="name" id="name" value="<%=row.board_title%>" required/></td>
+                <td><input type="text" name="name" id="name" value="<%=rows.board_title%>" required/></td>
             </tr>
             <tr>
                 <td>작성자</td>
-                <td><input type="text" name="title" id="title" value="<%=row.board_writer%>" required/></td>
+                <td><input type="text" name="title" id="title" value="<%=rows.board_writer%>" required/></td>
             </tr>
             <tr>
                 <td>내용</td>
-                <td><textarea name="content" id="content" cols="30" rows="10" required><%=row.board_content%></textarea></td>
+                <td><textarea name="content" id="content" cols="30" rows="10" required><%=rows.board_content%></textarea></td>
             </tr>
             <tr>
                 <td colspan="2">
