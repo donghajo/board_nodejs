@@ -19,6 +19,9 @@ exports.board_read = async (req, res, next) => {
         return res.status(500).json(err);
     }
 }
+exports.board_read_update = async (req, res) =>{
+    return res.render('update');
+}
 
 exports.board_read_content = async (req, res, next) => {
     try{
@@ -37,11 +40,9 @@ exports.board_read_insert = async (req, res) =>{
 
 
 exports.board_update = async (req, res, next) => {
-    let { board_uid } = req.body;
-    try{
-        let rows = await boardService.board_update(board_uid);
-        console.log("pass");
-        return res.json(rows[0]);
+    try{      
+        let rows = await boardService.board_update(req);
+        return res.redirect('/board/list/'+req.body.board_uid);
     } catch(err){
         return res.status(500).json(err);
     }
@@ -50,7 +51,6 @@ exports.board_update = async (req, res, next) => {
 
 exports.board_delete = async (req, res, next) => {
   try{
-      console.log(req.body.board_uid);
     boardService.board_delete(req);
     return res.redirect('/board/list');
   }catch(err){
