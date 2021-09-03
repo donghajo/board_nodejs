@@ -24,9 +24,8 @@ exports.board_read = async () => {
 
 exports.board_read_content = async (req, res) => {
     try {
-        let id = req.body.board_uid;
+        let id = req.params.board_uid;
         let rows = await pool.query(boardQuery.board_read_content, [id]);
-        console.log(rows[0]);
         return rows[0];
     } catch (err) {
         throw Error(err);
@@ -34,14 +33,21 @@ exports.board_read_content = async (req, res) => {
 }
 
 
-exports.board_update = async (board_id) => {
+exports.board_update = async (req, res) => {
+    var data = [req.body.board_uid, req.body.board_title, req.body.board_writer, req.body.board_content];
+    try {
+        let rows = await pool.query(boardQuery.board_update, data);
+        return rows[0];
+    } catch (err){
+        throw Errow(err);
+    }
 
 }
 
 
 exports.board_delete = async (req, res) => {
     try{
-        var id = req.body.board_uid;
+        var id = req.params.board_uid;
         console.log([id]);
         pool.query(boardQuery.board_delete, [id]);
         return;
