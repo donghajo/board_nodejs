@@ -10,6 +10,15 @@ exports.board_insert = async (req, res, next) => {
     }
 }
 
+exports.board_update = async (req, res, next) => {
+    var data = [req.body.board_uid, req.body.board_title, req.body.board_writer, req.body.board_content];
+    try{  
+        boardService.board_update(data);
+        return res.redirect('/board/list/'+ req.body.board_uid);
+    } catch(err){
+        return res.status(500).json(err);
+    }
+}
 
 exports.board_read = async (req, res, next) => {
     try {
@@ -19,33 +28,20 @@ exports.board_read = async (req, res, next) => {
         return res.status(500).json(err);
     }
 }
-exports.board_read_update = async (req, res) =>{
-    return res.render('update');
-}
 
-exports.board_read_content = async (req, res, next) => {
+exports.board_content = async (req, res, next) => {
     try{
-        let rows = await boardService.board_read_content(req);
+        let rows = await boardService.board_content(req);
         return res.render('read', {rows:rows[0]});
     }catch(err){
+        console.log("hello");
         return res.status(500).json(err);
     }
-    
 }
 
 
 exports.board_read_insert = async (req, res) =>{
     return res.render('write');
-}
-
-
-exports.board_update = async (req, res, next) => {
-    try{      
-        let rows = await boardService.board_update(req);
-        return res.redirect('/board/list/'+req.body.board_uid);
-    } catch(err){
-        return res.status(500).json(err);
-    }
 }
 
 
@@ -55,6 +51,5 @@ exports.board_delete = async (req, res, next) => {
     return res.redirect('/board/list');
   }catch(err){
     return res.status(500).json(err);
-  }
-    
+  }   
 }
