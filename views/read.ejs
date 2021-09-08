@@ -30,7 +30,8 @@
         </table>
     </form>
                   
-    <form action="/board/list/<%=rows.board_uid%>" method="post">
+    <form action="/board/list/delete" method="post">
+        <input type="hidden" name="board_uid" id="board_uid" value="<%=rows.board_uid%>"/>
         <button type="submit">글 삭제</button>
     </form>   
 

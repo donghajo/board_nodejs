@@ -2,7 +2,7 @@ const boardQuery = require('../queries/board-query');
 const pool = require('../database/pool');
 
 
-exports.board_insert = async (req, res) => {
+exports.board_insert = async (req) => {
     try {
         pool.query(boardQuery.board_insert, req);
         return;
@@ -11,10 +11,11 @@ exports.board_insert = async (req, res) => {
         throw Error(err);
     }
 }
-exports.board_update = async (req, res) => {
+exports.board_update = async (req) => {
     try {
-        pool.query(boardQuery.board_update, req);
-        return;
+        console.log(req);
+        let a = await pool.query(boardQuery.board_update, req);
+        return a[0];
     } catch (err){
         throw Errow(err);s
     }
@@ -29,21 +30,18 @@ exports.board_read = async () => {
     }
 }
 
-exports.board_content = async (req, res) => {
+exports.board_content = async (req) => {
     try {
-        let id = req.params.board_uid;
-        let rows = await pool.query(boardQuery.board_content, [id]);
+        let rows = await pool.query(boardQuery.board_content, req);
         return rows[0];
     } catch (err) {
         throw Error(err);
     }
 }
 
-exports.board_delete = async (req, res) => {
+exports.board_delete = async (req) => {
     try{
-        var id = req.params.board_uid;
-        console.log([id]);
-        pool.query(boardQuery.board_delete, [id]);
+        pool.query(boardQuery.board_delete, req);
         return;
     }catch(err){
         throw Error(err);
