@@ -4,7 +4,7 @@ const connection = mysql.createPool({
     user: 'root',
     port: 3306,
     password: '980605',
-    database: 'db_board'
+    database: 'board'
 });
 
 

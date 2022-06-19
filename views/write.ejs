@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Board_content</title>
 </head>
+
 <body>
     <h1>board_write</h1>
-    <form action="/board/insert" method="post">
+    <form action="/insert" method="post">
         <table border="1">
             <tr>
                 <td>작성자</td>
-                <td><input type="text" name="board_writer" id="board_writer" required/></td>
+                <td><input type="text" name="board_writer" id="board_writer" required /></td>
             </tr>
             <tr>
                 <td>제목</td>
-                <td><input type="text" name="board_title" id="board_title" required/></td>
+                <td><input type="text" name="board_title" id="board_title" required /></td>
             </tr>
             <tr>
                 <td>내용</td>
@@ -22,11 +24,12 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <input type="submit" >
+                    <input type="submit">
                 </td>
             </tr>
-        
+
         </table>
     </form>
 </body>
+
 </html>
