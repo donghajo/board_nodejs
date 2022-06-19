@@ -4,7 +4,7 @@ exports.insertBoard = async (req, res) => {
     let data = [req.body.board_title, req.body.board_writer, req.body.board_content];
     try {
         boardService.insertBoard(data);
-        res.redirect('/list');
+        res.redirect('/');
     } catch (err) {
         return res.status(500).json(err);
     }
@@ -14,7 +14,7 @@ exports.updateBoard = async (req, res) => {
     let data = [req.body.board_title, req.body.board_content, req.body.board_writer, req.body.board_uid];
     try {
         boardService.updateBoard(data);
-        return res.redirect('/list');
+        return res.redirect('/');
     } catch (err) {
         return res.status(500).json(err);
     }
