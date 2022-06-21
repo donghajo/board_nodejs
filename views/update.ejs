@@ -1,33 +1,41 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Board_content</title>
 </head>
+
 <body>
-    <h1>board_read</h1>
-    <form action="/board/list/update" method="post">
+    <h1>board_content</h1>
+    <form action="/<%=rows.board_uid%>?_method=PUT" method="post">
         <table border="1">
-            <input type="hidden" name="idx" value="<%=rows.board_uid%>"/>
+            <input type="hidden" name="board_uid" id="board_uid" value="<%=rows.board_uid%>" />
             <tr>
                 <td>제목</td>
-                <td><input type="text" name="name" id="name" value="<%=rows.board_title%>" required/></td>
+                <td><input type="text" name="board_title" id="board_title" value="<%=rows.board_title%>" required />
+                </td>
             </tr>
             <tr>
                 <td>작성자</td>
-                <td><input type="text" name="title" id="title" value="<%=rows.board_writer%>" required/></td>
+                <td><input type="text" name="board_writer" id="board_writer" value="<%=rows.board_writer%>" required />
+                </td>
             </tr>
             <tr>
                 <td>내용</td>
-                <td><textarea name="content" id="content" cols="30" rows="10" required><%=rows.board_content%></textarea></td>
+                <td><textarea name="board_content" id="board_content" cols="30" rows="10"
+                        required><%=rows.board_content%></textarea></td>
             </tr>
             <tr>
                 <td colspan="2">
                     <button type="submit">글 수정</button>
-                    <a href="/board/list">목록</a>
-                </td>          
+                    <a href="/">목록</a>
+                </td>
             </tr>
         </table>
     </form>
+
+
 </body>
-</html> -->
+
+</html>
