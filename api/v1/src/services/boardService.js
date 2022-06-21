@@ -14,8 +14,8 @@ exports.insertBoard = async (req) => {
 exports.updateBoard = async (req) => {
     try {
         console.log(req);
-        let a = await pool.query(boardQuery.updateBoard, req);
-        return a[0];
+        let rows = await pool.query(boardQuery.updateBoard, req);
+        return rows[0];
     } catch (err) {
         throw Errow(err); s
     }
